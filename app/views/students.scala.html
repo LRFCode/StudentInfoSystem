@@ -1,0 +1,42 @@
+@(students : List[Student])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <caption><b>Students</b></caption>
+    <thead>
+
+    <tr align="center">
+
+
+        <th>Student Name</th>
+        <th>BirthDate</th>
+        <th>Classification</th>
+        <th>Class Rank</th>
+        <th>Overall GPA</th>
+        <th>Semester GPA</th>
+    </tr>
+    </thead>
+
+    @for(student <- students) {
+    <tbody>
+
+    <tr border="1" bordercolor="black" align="center">
+
+        <td><a href="student/@student.getStudentId()">@student.getStudentName()</a></td>
+        <td>@student.getBirthDate()</td>
+        <td>@student.getGradeClass()</td>
+        <td>@student.getRankClass()</td>
+        <td>@student.getOverallGPA()</td>
+        <td>@student.getSemesterGPA()</td>
+
+    </tr>
+    </tbody>
+    }
+</table>
+</body>
+</html>
