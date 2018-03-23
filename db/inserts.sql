@@ -12,7 +12,7 @@ INSERT INTO Student (StudentId, studentName) values(11, 'Erlich Bachman');
 INSERT INTO Student (StudentId, studentName) values(12, 'Jìng-Yáng');
 INSERT INTO Student (StudentId, studentName) values(13, 'Bertram Gilfoyle');
 INSERT INTO Student (StudentId, studentName) values(14, 'Jared Dunn');
-INSERT INTO Student (StudentId, studentName) values(15, 'Peter Gregory');
+INSERT INTO Student (StudentId, studentName) values(15, 'Anthony Scothorne');
 INSERT INTO Student (StudentId, studentName) values(16, 'Monica Hall');
 INSERT INTO Student (StudentId, studentName) values(17, 'Dinesh Chugtai');
 INSERT INTO Student (StudentId, studentName) values(18, 'Laurie Bream');
@@ -55,4 +55,147 @@ INSERT INTO Course (CourseId, courseName, teacherId) values (17, 'Analysis of Co
 INSERT INTO Course (CourseId, courseName, teacherId) values (18, 'App Development and Condiments', 3);
 INSERT INTO Course (CourseId, courseName, teacherId) values (19, 'Law of Robotics and Party Rights', 4);
 INSERT INTO Course (CourseId, courseName, teacherId) values (20, 'Advanced Safety Features', 2);
+
+--course values 1 - xx increment
+--student values = 1 - 30
+--courseid values = 1 - 20
+
+--first class
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (1, 1, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (2, 2, 2, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (3, 3, 3, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (4, 4, 4, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (5, 5, 5, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (6, 6, 6, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (7, 7, 7, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (8, 8, 8, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (9, 9, 9, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (10, 10, 10, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (11, 11, 11, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (12, 12, 12, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (13, 13, 13, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (14, 14, 14, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (15, 15, 15, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (16, 16, 16, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (17, 17, 17, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (18, 18, 18, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (19, 19, 19, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (20, 20, 20, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (21, 21, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (22, 22, 2, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (23, 23, 3, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (24, 24, 4, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (25, 25, 5, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (26, 26, 6, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (27, 27, 7, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (28, 28, 8, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (29, 29, 9, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (30, 30, 10, 70);
+
+--second class
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (1, 1, 11, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (2, 2, 12, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (3, 3, 13, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (4, 4, 14, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (5, 5, 15, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (6, 6, 16, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (7, 7, 17, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (8, 8, 18, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (9, 9, 19, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (10, 10, 20, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (11, 11, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (12, 12, 2, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (13, 13, 3, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (14, 14, 4, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (15, 15, 5, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (16, 16, 6, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (17, 17, 7, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (18, 18, 8, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (19, 19, 9, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (20, 20, 10, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (21, 21, 11, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (22, 22, 12, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (23, 23, 13, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (24, 24, 14, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (25, 25, 15, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (26, 26, 16, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (27, 27, 17, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (28, 28, 18, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (29, 29, 19, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (30, 30, 20, 70);
+
+
+
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (31, 31, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (32, 1, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (33, 1, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (34, 1, 1, 70);
+INSERT INTO Student Course(studentcourseId, studentid, courseid, 80)
+VALUES (35, 1, 1, 70);
+
+
 

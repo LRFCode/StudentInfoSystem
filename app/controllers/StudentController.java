@@ -1,5 +1,6 @@
 package controllers;
 
+import models.GradeClassCount;
 import models.Student;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -23,7 +24,7 @@ public class StudentController extends Controller
         this.jpaApi = jpaApi;
     }
 
-    @Transactional (readOnly = true)
+    @Transactional(readOnly = true)
     public Result getStudents()
     {
         List<Student> students = jpaApi.em().createQuery("SELECT s from Student s").getResultList();
@@ -31,13 +32,39 @@ public class StudentController extends Controller
         return ok(views.html.students.render(students));
     }
 
-    @Transactional (readOnly = true)
+    @Transactional(readOnly = true)
     public Result getStudent(int studentId)
     {
         Student student = jpaApi.em().createQuery("SELECT s FROM Student s WHERE studentId =:studentId", Student.class)
                 .setParameter("studentId", studentId).getSingleResult();
 
         return ok(views.html.student.render(student));
+    }
+
+    @Transactional(readOnly = true)
+    public Result getGradeClassChart()
+    {
+        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
+                "FROM Student s " +
+                //"JOIN PugFood pf ON f.foodId = pf.foodId " +
+                "GROUP BY s.gradeClass";
+
+        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
+
+        return ok(views.html.gradeclasschart.render(gradeClassCounts));
+    }
+
+    @Transactional(readOnly = true)
+    public Result getAdmin()
+    {
+        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
+                "FROM Student s " +
+                //"JOIN PugFood pf ON f.foodId = pf.foodId " +
+                "GROUP BY s.gradeClass";
+
+        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
+
+        return ok(views.html.adminHome.render(gradeClassCounts));
     }
 
 

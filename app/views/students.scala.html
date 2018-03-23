@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<table border="1">
-    <caption><b>Students</b></caption>
+<div class="container">
+    <h2 class=".text-center">Students</h2>
+
+<table data-toggle="table">
     <thead>
 
-    <tr align="center">
+    <tr>
 
 
         <th>Student Name</th>
@@ -25,10 +33,10 @@
     @for(student <- students) {
     <tbody>
 
-    <tr border="1" bordercolor="black" align="center">
+    <tr>
 
         <td><a href="student/@student.getStudentId()">@student.getStudentName()</a></td>
-        <td>@student.getBirthDate()</td>
+        <td>@student.getFormattedBirthDate</td>
         <td>@student.getGradeClass()</td>
         <td>@student.getRankClass()</td>
         <td>@student.getOverallGPA()</td>
@@ -38,5 +46,8 @@
     </tbody>
     }
 </table>
+</div>
 </body>
+<script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
 </html>

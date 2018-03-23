@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -51,5 +52,18 @@ public class Student
     public BigDecimal getSemesterGPA()
     {
         return semesterGPA;
+    }
+    public String getFormattedBirthDate()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+
+        String date = null;
+
+        if (birthDate != null)
+        {
+            date = sdf.format(birthDate);
+        }
+
+        return date;
     }
 }

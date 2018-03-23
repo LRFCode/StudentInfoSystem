@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+@import helper._
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Test Data</title>
+</head>
+<body>
+<form method="POST" ACTION="addStudentCourseRows">
+
+    @CSRF.formField
+    <input type="submit" value="Create StudentCourse Links">
+</form>
+<br>
+<form method="POST" ACTION="addAssignmentRows">
+    @CSRF.formField
+    <input type="submit" value="Create Assignment Links">
+</form>
+<br>
+    <form method="POST" ACTION="addAssignmentRow">
+    @CSRF.formField
+    <input type="submit" value="Create Single Assignment Set Link">
+
+
+</body>
+</html>

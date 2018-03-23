@@ -99,15 +99,73 @@
     </index>
    </folder>
   </table>
+  <table id="TAB24" populated="true" UUID="d7d8186a-d88b-42b8-af88-33a0735034f4" name="Assignment" objectType="TABLE" physicalName="Assignment" >
+   <remarks></remarks>
+   <folder id="FOLTAB241" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL25" populated="true" UUID="652d5f3e-1af5-4257-afac-1f3391a0eccc" autoIncrement="true" autoIncrementSequenceName="Assignment_AssignmentId_seq" defaultValue="" name="AssignmentId" nullable="0" physicalName="AssignmentId" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL26" populated="true" UUID="6d674607-33a4-4bdb-8ee4-521ffc5ee4be" autoIncrement="false" autoIncrementSequenceName="Assignment_AssignmentName_seq" defaultValue="" name="AssignmentName" nullable="0" physicalName="AssignmentName" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL27" populated="true" UUID="79140774-a160-4fb1-a39e-c3132ac68171" autoIncrement="false" autoIncrementSequenceName="Course_CourseId_seq" defaultValue="" name="CourseId" nullable="0" physicalName="CourseId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB243" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB242" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB244" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX28" populated="true" UUID="f6e77b97-a65d-446b-8e4c-dfeceace9f19" clustered="false" name="Assignment_pk" physicalName="assignment_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC29" populated="true" UUID="623ee9fa-c4f6-4059-bf4a-cffe5de4550f" ascendingOrDescending="UNSPECIFIED" column-ref="COL25" name="AssignmentId" physicalName="AssignmentId" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB30" populated="true" UUID="c7acdf81-faa3-4935-9e7a-c4d301ad18e9" name="AssignmentGrade" objectType="TABLE" physicalName="AssignmentGrade" >
+   <remarks></remarks>
+   <folder id="FOLTAB301" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL31" populated="true" UUID="972c77ce-e0a3-4e72-91a9-8160e72f0f62" autoIncrement="true" autoIncrementSequenceName="AssignmentGrade_AssignmentGradeId_seq" defaultValue="" name="AssignmentGradeId" nullable="0" physicalName="AssignmentGradeId" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL32" populated="true" UUID="5eabaf0b-8536-4b09-be55-fabc9c54e22b" autoIncrement="false" autoIncrementSequenceName="Assignment_AssignmentId_seq" defaultValue="" name="AssignmentId" nullable="0" physicalName="AssignmentId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL33" populated="true" UUID="e4b3465e-a371-4ea2-8232-cce683b046c7" autoIncrement="false" autoIncrementSequenceName="Student_StudentId_seq" defaultValue="" name="StudentId" nullable="0" physicalName="StudentId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL34" populated="true" UUID="900ec23f-0cc9-4cff-83ab-8933198a42dd" autoIncrement="false" autoIncrementSequenceName="AssignmentGrade_Grade_seq" defaultValue="" name="Grade" nullable="0" physicalName="Grade" precision="5" referenceCount="1" scale="2" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB303" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB302" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB304" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX35" populated="true" UUID="a7153b7b-2895-4ed3-bcee-e03d524f8c73" clustered="false" name="AssignmentGrade_pk" physicalName="assignmentgrade_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC36" populated="true" UUID="822e1d6e-0a7c-4535-8ac0-90a777ef4d88" ascendingOrDescending="UNSPECIFIED" column-ref="COL31" name="AssignmentGradeId" physicalName="AssignmentGradeId" />
+    </index>
+   </folder>
+  </table>
   <relationships>
-   <relationship id="REL24" populated="true" UUID="332c976c-e46b-4b6b-9b15-f10ddad73f6a" deferrability="7" deleteRule="3" fk-table-ref="TAB17" fkCardinality="7" identifying="false" name="Student_StudentCourse_fk" physicalName="student_studentcourse_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP25" populated="true" UUID="453de796-fbbe-40c8-b68b-24b44447b9da" fk-column-ref="COL19" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   <relationship id="REL37" populated="true" UUID="332c976c-e46b-4b6b-9b15-f10ddad73f6a" deferrability="7" deleteRule="3" fk-table-ref="TAB17" fkCardinality="7" identifying="false" name="Student_StudentCourse_fk" physicalName="student_studentcourse_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP38" populated="true" UUID="453de796-fbbe-40c8-b68b-24b44447b9da" fk-column-ref="COL19" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL26" populated="true" UUID="d9ef68a9-c1fd-4b34-863f-f1e081f84b7b" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="Teacher_Course_fk" physicalName="teacher_course_fk" pk-table-ref="TAB6" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP27" populated="true" UUID="38d33729-ca53-42d7-b280-1d3a2965b273" fk-column-ref="COL14" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL7" />
+   <relationship id="REL39" populated="true" UUID="48bb6c53-abc9-4305-85ef-ef19d04864bd" deferrability="7" deleteRule="3" fk-table-ref="TAB30" fkCardinality="7" identifying="false" name="Student_AssignmentGrade_fk" physicalName="student_assignmentgrade_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP40" populated="true" UUID="7d61ff4e-9e2a-4d9f-a66a-332d5721fa4b" fk-column-ref="COL33" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL28" populated="true" UUID="c99a5cb6-face-4244-8a2c-d99bffb3c681" deferrability="7" deleteRule="3" fk-table-ref="TAB17" fkCardinality="7" identifying="false" name="Course_StudentCourse_fk" physicalName="course_studentcourse_fk" pk-table-ref="TAB11" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP29" populated="true" UUID="35b9f8ab-ce2d-4aff-9413-3be6fd19fa91" fk-column-ref="COL20" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL12" />
+   <relationship id="REL41" populated="true" UUID="d9ef68a9-c1fd-4b34-863f-f1e081f84b7b" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="Teacher_Course_fk" physicalName="teacher_course_fk" pk-table-ref="TAB6" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP42" populated="true" UUID="38d33729-ca53-42d7-b280-1d3a2965b273" fk-column-ref="COL14" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL7" />
+   </relationship>
+   <relationship id="REL43" populated="true" UUID="c99a5cb6-face-4244-8a2c-d99bffb3c681" deferrability="7" deleteRule="3" fk-table-ref="TAB17" fkCardinality="7" identifying="false" name="Course_StudentCourse_fk" physicalName="course_studentcourse_fk" pk-table-ref="TAB11" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP44" populated="true" UUID="35b9f8ab-ce2d-4aff-9413-3be6fd19fa91" fk-column-ref="COL20" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL12" />
+   </relationship>
+   <relationship id="REL45" populated="true" UUID="4537d165-ba06-4900-a03f-dce9f1010d62" deferrability="7" deleteRule="3" fk-table-ref="TAB24" fkCardinality="7" identifying="false" name="Course_Assignment_fk" physicalName="course_assignment_fk" pk-table-ref="TAB11" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP46" populated="true" UUID="e20f221e-7abf-4db8-8f4a-1fdba09fa3a3" fk-column-ref="COL27" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL12" />
+   </relationship>
+   <relationship id="REL47" populated="true" UUID="134fe437-da81-4177-9fbc-f0e1776044cd" deferrability="7" deleteRule="3" fk-table-ref="TAB30" fkCardinality="7" identifying="false" name="Assignment_AssignmentGrade_fk" physicalName="assignment_assignmentgrade_fk" pk-table-ref="TAB24" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP48" populated="true" UUID="4d448bc3-2af1-49f5-8a69-2e38f4bfeb1e" fk-column-ref="COL32" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL25" />
    </relationship>
   </relationships>
  </target-database>
@@ -115,13 +173,18 @@
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
-  <table-pane table-ref="TAB1" x="494" y="333" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB6" x="724" y="330" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB11" x="547" y="688" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB17" x="469" y="514" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL26" pkConnection="0.04950495049504951" fkConnection="0.949238578680203" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL24" pkConnection="0.4975124378109453" fkConnection="0.5555555555555556" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL28" pkConnection="0.37055837563451777" fkConnection="0.6711111111111111" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-pane table-ref="TAB1" x="33" y="57" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB6" x="994" y="340" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB11" x="288" y="437" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB17" x="20" y="272" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB24" x="703" y="133" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB30" x="411" y="208" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL41" pkConnection="0.04950495049504951" fkConnection="0.949238578680203" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL37" pkConnection="0.4975124378109453" fkConnection="0.5555555555555556" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL43" pkConnection="0.37055837563451777" fkConnection="0.6711111111111111" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL45" pkConnection="0.5482233502538071" fkConnection="0.4541284403669725" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL47" pkConnection="0.5070422535211268" fkConnection="0.47368421052631576" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL39" pkConnection="0.17543859649122806" fkConnection="0.8450704225352113" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
