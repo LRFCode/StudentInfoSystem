@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
+//StudentCourse table
 @Entity
 public class StudentCourse
 {
@@ -14,6 +15,7 @@ public class StudentCourse
     private int studentId;
     private int courseId;
     private BigDecimal grade;
+    private BigDecimal courseGPA;
 
 
     public void setStudentCourseId(int studentCourseId)
@@ -49,5 +51,10 @@ public class StudentCourse
     public BigDecimal getGrade()
     {
         return grade;
+    }
+
+    public BigDecimal getCourseGPA()
+    {
+        return courseGPA;
     }
 }

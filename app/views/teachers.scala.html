@@ -1,0 +1,53 @@
+@(teachers : List[Teacher])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/lux.css" />
+    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="/assets/lib/x-editable-bootstrap3/css/bootstrap-editable.css">
+
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2 class=".text-center">Teachers</h2>
+
+    <div id="toolbar">
+        <button id="btnAddTeacher" type="button" class="btn btn-success btn-mg">Add Teacher</button>
+    </div>
+    <table data-toggle="table">
+        <thead>
+
+        <tr>
+
+
+            <th data-field="name" >Teacher Name</th>
+            <th data-field="subject">Subject Focus</th>
+            <th data-field="hiredate">Hire Date</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @for(teacher <- teachers) {
+
+        <tr>
+
+            <td><a href="teacher/@teacher.getTeacherId()">@teacher.getTeacherName()</a></td>
+            <td>@teacher.getSubjectFocus</td>
+            <td>@teacher.getFormattedHireDate</td>
+
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

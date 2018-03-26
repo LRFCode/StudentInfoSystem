@@ -25,6 +25,8 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "org.webjars" % "chartjs" % "2.7.0"
 libraryDependencies += "org.webjars.bower" % "bootstrap-table" % "1.11.1"
+libraryDependencies += "org.webjars" % "x-editable-bootstrap3" % "1.5.1-1"
+
 
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test

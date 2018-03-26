@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
-
+//AssignmentGrade table
 @Entity
 public class AssignmentGrade
 {

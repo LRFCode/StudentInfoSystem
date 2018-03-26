@@ -11,6 +11,7 @@ import play.mvc.Result;
 import javax.inject.Inject;
 import java.util.Random;
 
+//Controller for generating test data to add to database
 public class TestDataController extends Controller
 {
 

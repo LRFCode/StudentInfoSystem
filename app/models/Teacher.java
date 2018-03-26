@@ -2,8 +2,10 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//Teacher table
 @Entity
 public class Teacher
 {
@@ -31,5 +33,19 @@ public class Teacher
     public Date getHireDate()
     {
         return hireDate;
+    }
+
+    public String getFormattedHireDate()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy");
+
+        String date = null;
+
+        if (hireDate != null)
+        {
+            date = sdf.format(hireDate);
+        }
+
+        return date;
     }
 }

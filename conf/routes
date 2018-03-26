@@ -1,23 +1,34 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+#Example route?
+GET     /territories             controllers.TerritoryController.getTerritories
 
-GET     /territories                controllers.TerritoryController.getTerritories
+# Page Routes
+
+GET     /login                   controllers.LandingController.getLogin
+GET     /adminHome               controllers.LandingController.getAdmin
 
 GET     /students                controllers.StudentController.getStudents
 GET     /student/:id             controllers.StudentController.getStudent(id:Integer)
-GET     /adminHome               controllers.StudentController.getAdmin
 
+GET     /courses                 controllers.CourseController.getCourses
+GET     /course/:id              controllers.CourseController.getCourse(id:Integer)
 
+GET     /teachers                controllers.TeacherController.getTeachers
+
+GET     /graphs                  controllers.ChartController.getGraph
+
+#Charts and Graphs Routes
 GET     /chart                   controllers.ChartController.getChart
 GET     /gradeclasschart         controllers.StudentController.getGradeClassChart
 
-
+#Testing Routes
 GET     /testData                controllers.TestDataController.getTestDataGenerator
 POST    /addStudentCourseRows    controllers.TestDataController.postAddStudentCourseRows
 POST    /addAssignmentRows       controllers.TestDataController.postAddAssignmentRows
 POST    /addAssignmentRows       controllers.TestDataController.postAddAssignmentRows
-POST    /addAssignmentRow       controllers.TestDataController.postAddAssignmentRow
+POST    /addAssignmentRow        controllers.TestDataController.postAddAssignmentRow
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

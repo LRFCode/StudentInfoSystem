@@ -1,0 +1,50 @@
+@(courses : List[Course])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/lux.css" />
+    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="/assets/lib/x-editable-bootstrap3/css/bootstrap-editable.css">
+
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2 class=".text-center">Courses</h2>
+
+    <div id="toolbar">
+        <button id="btnAddCourse" type="button" class="btn btn-success btn-mg">Add Course</button>
+    </div>
+    <table data-toggle="table">
+        <thead>
+
+        <tr>
+
+
+            <th data-sortable="true" data-field="name" data-editable="true">Course Name</th>
+            <th data-field="teacherID">TeacherId</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @for(course <- courses) {
+
+        <tr>
+            <td><a href="course/@course.getCourseId()">@course.getCourseName()</a></td>
+            <td>@course.getTeacherId</td>
+
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

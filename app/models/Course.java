@@ -3,10 +3,10 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+//Course table
 @Entity
 public class Course
 {
-
    @Id
    private int courseId;
    private String courseName;

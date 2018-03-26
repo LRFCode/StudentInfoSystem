@@ -3,51 +3,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Students</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/lux.css" />
     <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="/assets/lib/x-editable-bootstrap3/css/bootstrap-editable.css">
+
     <script src="/assets/lib/jquery/jquery.min.js"></script>
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
 
 </head>
 <body>
-<div class="container">
+
     <h2 class=".text-center">Students</h2>
 
-<table data-toggle="table">
+
+<table class="table table-responsive" data-pagination-loop="true" data-pagination="true" id="students" data-show-columns="true" data-show-refresh="true" data-toolbar="#toolbar" data-search="true" data-toggle="table">
     <thead>
-
     <tr>
+        <th data-sortable="true" data-field="name" data-editable="true">Student Name</th>
+        <th data-field="birthdate">BirthDate</th>
+        <th data-field="pEmail">Parent Email</th>
+        <th data-field="pPhone">Parent Phone</th>
+        <th data-field="sEmail">Student Email</th>
+        <th data-field="sPhone">Student Phone</th>
+        <th data-field="class">Classification</th>
+        <th data-field="rank">Class Rank</th>
+        <th data-field="totalGPA">Overall GPA</th>
+        <th data-field="totalGPA">Delete this: Bmked</th>
 
-
-        <th>Student Name</th>
-        <th>BirthDate</th>
-        <th>Classification</th>
-        <th>Class Rank</th>
-        <th>Overall GPA</th>
-        <th>Semester GPA</th>
     </tr>
     </thead>
-
-    @for(student <- students) {
     <tbody>
-
+    @for(student <- students) {
     <tr>
-
         <td><a href="student/@student.getStudentId()">@student.getStudentName()</a></td>
         <td>@student.getFormattedBirthDate</td>
-        <td>@student.getGradeClass()</td>
-        <td>@student.getRankClass()</td>
-        <td>@student.getOverallGPA()</td>
-        <td>@student.getSemesterGPA()</td>
-
+        <td>@student.getParentEmail</td>
+        <td>@student.getParentPhone</td>
+        <td>@student.getStudentEmail</td>
+        <td>@student.getStudentPhone</td>
+        <td>@student.getGradeClass</td>
+        <td>@student.getRankClass</td>
+        <td>@student.getOverallGPA</td>
+        <td>@student.isBookmarked</td>
     </tr>
-    </tbody>
     }
+    </tbody>
+
 </table>
-</div>
+
 </body>
-<script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
-<script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
+
 </html>

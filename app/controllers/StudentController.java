@@ -24,6 +24,7 @@ public class StudentController extends Controller
         this.jpaApi = jpaApi;
     }
 
+    //Retrieves entire student table from DB and puts it on page
     @Transactional(readOnly = true)
     public Result getStudents()
     {
@@ -32,6 +33,7 @@ public class StudentController extends Controller
         return ok(views.html.students.render(students));
     }
 
+    //Retrieves individual student and puts it on page
     @Transactional(readOnly = true)
     public Result getStudent(int studentId)
     {
@@ -41,6 +43,7 @@ public class StudentController extends Controller
         return ok(views.html.student.render(student));
     }
 
+    //Takes students' classifications from DB and graphs them on page
     @Transactional(readOnly = true)
     public Result getGradeClassChart()
     {
@@ -52,19 +55,6 @@ public class StudentController extends Controller
         List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
 
         return ok(views.html.gradeclasschart.render(gradeClassCounts));
-    }
-
-    @Transactional(readOnly = true)
-    public Result getAdmin()
-    {
-        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
-                "FROM Student s " +
-                //"JOIN PugFood pf ON f.foodId = pf.foodId " +
-                "GROUP BY s.gradeClass";
-
-        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
-
-        return ok(views.html.adminHome.render(gradeClassCounts));
     }
 
 
