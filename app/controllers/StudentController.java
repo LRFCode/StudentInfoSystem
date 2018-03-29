@@ -3,6 +3,7 @@ package controllers;
 import models.GradeClassCount;
 import models.Student;
 import models.StudentDetail;
+import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
@@ -76,6 +77,22 @@ public class StudentController extends Controller
         List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
 
         return ok(views.html.gradeclasschart.render(gradeClassCounts));
+    }
+    @Transactional(readOnly = false)
+    public Result postTableUpdate()
+    {
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String name = form.get("name");
+        String pk = form.get("pk");
+        String value = form.get("value");
+
+
+        System.out.println(name);
+        System.out.println(pk);
+        System.out.println(value);
+
+        return ok("Blah");
     }
 
     /*@Transactional

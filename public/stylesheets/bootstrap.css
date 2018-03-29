@@ -256,7 +256,7 @@ th {
     border: 1px solid #000;
   }
   .table {
-    border-collapse: collapse !important;
+    border-collapse: collapse
   }
   .table td,
   .table th {
@@ -276,7 +276,7 @@ th {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: 'Glyphicons Halflings' !important;
   font-style: normal;
   font-weight: normal;
   line-height: 1;

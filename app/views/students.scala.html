@@ -8,23 +8,29 @@
 
     <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
     <link rel="stylesheet" href="assets/stylesheets/bootstrap.css"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+
     <script src="/assets/lib/jquery/jquery.min.js"></script>
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
+    <script src="assets/lib/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
+    <script src="assets/lib/x-editable-bootstrap3/js/bootstrap-editable.js"></script>
+
 
 </head>
 <body>
 <div class="container">
     <h2 class=".text-center">Students</h2>
-
-    <div id="toolbar">
+</div>
+<div class="bootstrap-table">
+    <div id="fixed-table-toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
         </button>
     </div>
 
-    <table id="table"
+    <table   id="table"
+            data-toggle="table"
            data-toolbar="#toolbar"
            data-search="true"
            data-show-refresh="true"
@@ -32,27 +38,27 @@
            data-show-columns="true"
            data-show-export="true"
            data-detail-view="true"
-           data-detail-formatter="detailFormatter"
            data-minimum-count-columns="2"
            data-show-pagination-switch="true"
            data-pagination="true"
-           data-id-field="id"
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="false"
            data-side-pagination="server"
            data-query-params="queryParams"
            data-response-handler="responseHandler"
-           data-toggle="table">
+             data-id-field="id"
+             data-editable-emptytext="Default empty text."
+             data-editable-url="/studentUpdate">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="name" data-editable="true">Student Name</th>
-            <th data-field="birthdate">BirthDate</th>
-            <th data-field="class">Classification</th>
-            <th data-field="totalGPA">Overall GPA</th>
-            <th data-field="pEmail">Parent Email</th>
-            <th data-field="pPhone">Parent Phone</th>
-            <th data-field="sEmail">Student Email</th>
-            <th data-field="sPhone">Student Phone</th>
+            <th data-editable-field="name">Student Name</th>
+            <th data-editable-field="birthdate" data-editable="true">BirthDate</th>
+            <th data-editable-field="class">Classification</th>
+            <th data-editable-field="totalGPA">Overall GPA</th>
+            <th data-field="id" data-editable-field="pEmail" data-editable="true" data-type="text">Parent Email</th>
+            <th data-editable-field="pPhone">Parent Phone</th>
+            <th data-editable-field="sEmail">Student Email</th>
+            <th data-editable-field="sPhone">Student Phone</th>
         </tr>
         </thead>
         <tbody>
@@ -62,7 +68,7 @@
             <td>@student.getFormattedBirthDate</td>
             <td>@student.getGradeClass</td>
             <td>@student.getFormattedOverallGPA</td>
-            <td>@student.getParentEmail</td>
+            <td data-pk="@student.getStudentId()">@student.getParentEmail</td>
             <td>@student.getParentPhone</td>
             <td>@student.getStudentEmail</td>
             <td>@student.getStudentPhone</td>
