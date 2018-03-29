@@ -1,13 +1,16 @@
 package controllers;
 
+import com.amazonaws.auth.policy.actions.SimpleEmailServiceActions;
 import models.GradeClassCount;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
+import services.Email;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 
 // Admin page and Login screen
@@ -15,6 +18,7 @@ public class LandingController extends Controller
 {
     private FormFactory formFactory;
     private JPAApi jpaApi;
+
 
     @Inject
     public LandingController(FormFactory formFactory, JPAApi jpaApi)
@@ -45,4 +49,15 @@ public class LandingController extends Controller
         return ok(views.html.login.render());
 
     }
+
+
+    public Result postSendEmail()
+    {
+        Date date = new Date();
+
+        Email.sendEmail(date);
+
+        return ok("Sent Email");
+    }
+
 }

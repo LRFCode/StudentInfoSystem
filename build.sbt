@@ -26,6 +26,8 @@ libraryDependencies ++= Seq(
 libraryDependencies += "org.webjars" % "chartjs" % "2.7.0"
 libraryDependencies += "org.webjars.bower" % "bootstrap-table" % "1.11.1"
 libraryDependencies += "org.webjars" % "x-editable-bootstrap3" % "1.5.1-1"
+libraryDependencies += "org.webjars" % "font-awesome" % "5.0.8"
+libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.11.301"
 
 
 // Testing libraries for dealing with CompletionStage...

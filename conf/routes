@@ -8,9 +8,10 @@ GET     /territories             controllers.TerritoryController.getTerritories
 
 GET     /login                   controllers.LandingController.getLogin
 GET     /adminHome               controllers.LandingController.getAdmin
+POST    /adminHome               controllers.LandingController.postSendEmail
 
-GET     /students                controllers.StudentController.getStudents
-GET     /student/:id             controllers.StudentController.getStudent(id:Integer)
+GET     /students                controllers.StudentController.getStudentsDetails
+GET     /student/:id             controllers.StudentController.getStudentDetails(id:Integer)
 
 GET     /courses                 controllers.CourseController.getCourses
 GET     /course/:id              controllers.CourseController.getCourse(id:Integer)

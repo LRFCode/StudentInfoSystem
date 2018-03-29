@@ -1,4 +1,4 @@
-@(student : Student)
+@(student : StudentDetail)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +11,11 @@
 <h2>Student Info:</h2>
 <p>Birthdate: @student.getFormattedBirthDate</p>
 <p>Classification: @student.getGradeClass</p>
-<p>Overall GPA: @student.getOverallGPA</p>
+<p>Rank: @student.getRankClass</p>
+<p>Overall GPA: @student.getFormattedOverallGPA</p>
+<p>Parent's Email: @student.getParentEmail</p>
+<p>Parent's Phone: @student.getParentPhone</p>
+<p>Student's Email: @student.getStudentEmail</p>
+<p>Student's Phone: @student.getStudentPhone</p>
 </body>
 </html>

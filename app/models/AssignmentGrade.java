@@ -52,3 +52,4 @@ public class AssignmentGrade
         this.grade = grade;
     }
 }
+//L 3.67, C 3.67, I .67, A 2.00  jja

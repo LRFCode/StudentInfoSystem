@@ -15,8 +15,6 @@ public class StudentCourse
     private int studentId;
     private int courseId;
     private BigDecimal grade;
-    private BigDecimal courseGPA;
-
 
     public void setStudentCourseId(int studentCourseId)
     {
@@ -53,8 +51,5 @@ public class StudentCourse
         return grade;
     }
 
-    public BigDecimal getCourseGPA()
-    {
-        return courseGPA;
-    }
+
 }

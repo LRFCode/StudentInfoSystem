@@ -1,15 +1,13 @@
-@(students : List[Student])
+@(students : List[StudentDetail])
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Students</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/stylesheets/lux.css" />
-    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="/assets/lib/x-editable-bootstrap3/css/bootstrap-editable.css">
 
+    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.css"/>
     <script src="/assets/lib/jquery/jquery.min.js"></script>
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
@@ -17,44 +15,63 @@
 
 </head>
 <body>
-
+<div class="container">
     <h2 class=".text-center">Students</h2>
 
+    <div id="toolbar">
+        <button id="remove" class="btn btn-danger" disabled>
+            <i class="glyphicon glyphicon-remove"></i> Delete
+        </button>
+    </div>
 
-<table class="table table-responsive" data-pagination-loop="true" data-pagination="true" id="students" data-show-columns="true" data-show-refresh="true" data-toolbar="#toolbar" data-search="true" data-toggle="table">
-    <thead>
-    <tr>
-        <th data-sortable="true" data-field="name" data-editable="true">Student Name</th>
-        <th data-field="birthdate">BirthDate</th>
-        <th data-field="pEmail">Parent Email</th>
-        <th data-field="pPhone">Parent Phone</th>
-        <th data-field="sEmail">Student Email</th>
-        <th data-field="sPhone">Student Phone</th>
-        <th data-field="class">Classification</th>
-        <th data-field="rank">Class Rank</th>
-        <th data-field="totalGPA">Overall GPA</th>
-        <th data-field="totalGPA">Delete this: Bmked</th>
+    <table id="table"
+           data-toolbar="#toolbar"
+           data-search="true"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-show-export="true"
+           data-detail-view="true"
+           data-detail-formatter="detailFormatter"
+           data-minimum-count-columns="2"
+           data-show-pagination-switch="true"
+           data-pagination="true"
+           data-id-field="id"
+           data-page-list="[10, 25, 50, 100, ALL]"
+           data-show-footer="false"
+           data-side-pagination="server"
+           data-query-params="queryParams"
+           data-response-handler="responseHandler"
+           data-toggle="table">
+        <thead>
+        <tr>
+            <th data-sortable="true" data-field="name" data-editable="true">Student Name</th>
+            <th data-field="birthdate">BirthDate</th>
+            <th data-field="class">Classification</th>
+            <th data-field="totalGPA">Overall GPA</th>
+            <th data-field="pEmail">Parent Email</th>
+            <th data-field="pPhone">Parent Phone</th>
+            <th data-field="sEmail">Student Email</th>
+            <th data-field="sPhone">Student Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for(student <- students) {
+        <tr>
+            <td><a href="student/@student.getStudentId()">@student.getStudentName</a></td>
+            <td>@student.getFormattedBirthDate</td>
+            <td>@student.getGradeClass</td>
+            <td>@student.getFormattedOverallGPA</td>
+            <td>@student.getParentEmail</td>
+            <td>@student.getParentPhone</td>
+            <td>@student.getStudentEmail</td>
+            <td>@student.getStudentPhone</td>
+        </tr>
+        }
+        </tbody>
 
-    </tr>
-    </thead>
-    <tbody>
-    @for(student <- students) {
-    <tr>
-        <td><a href="student/@student.getStudentId()">@student.getStudentName()</a></td>
-        <td>@student.getFormattedBirthDate</td>
-        <td>@student.getParentEmail</td>
-        <td>@student.getParentPhone</td>
-        <td>@student.getStudentEmail</td>
-        <td>@student.getStudentPhone</td>
-        <td>@student.getGradeClass</td>
-        <td>@student.getRankClass</td>
-        <td>@student.getOverallGPA</td>
-        <td>@student.isBookmarked</td>
-    </tr>
-    }
-    </tbody>
-
-</table>
+    </table>
+</div>
 
 </body>
 
