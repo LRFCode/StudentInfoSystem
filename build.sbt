@@ -19,13 +19,13 @@ libraryDependencies += "org.mariadb.jdbc" % "mariadb-java-client" % "2.2.2"
 // GUI
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.6.3",
-  "org.webjars" % "bootstrap" % "3.3.7-1" exclude("org.webjars", "jquery"),
+  "org.webjars" % "bootstrap" % "4.0.0-2" exclude("org.webjars", "jquery"),
   "org.webjars" % "jquery" % "3.2.1"
 )
 
 libraryDependencies += "org.webjars" % "chartjs" % "2.7.0"
-libraryDependencies += "org.webjars.bower" % "bootstrap-table" % "1.11.1"
-libraryDependencies += "org.webjars" % "x-editable-bootstrap3" % "1.5.1-1"
+libraryDependencies += "org.webjars.npm" % "bootstrap-table" % "1.12.1"
+libraryDependencies += "org.webjars.bower" % "popper.js" % "1.14.1"
 libraryDependencies += "org.webjars" % "font-awesome" % "5.0.8"
 libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.11.301"
 

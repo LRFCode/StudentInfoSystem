@@ -5,27 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Students</title>
-
-    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="assets/stylesheets/bootstrap.css"/>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-
-    <script src="/assets/lib/jquery/jquery.min.js"></script>
-    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="assets/lib/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
-    <script src="assets/lib/x-editable-bootstrap3/js/bootstrap-editable.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/now-ui-kit.css">
+    <link rel="stylesheet" href="assets/lib/bootstrap-table/src/bootstrap-table.css"/>
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap-editable.css"/>
 
 
 </head>
-<body>
+<body class="">
+
 <div class="container">
     <h2 class=".text-center">Students</h2>
 </div>
 <div class="bootstrap-table">
     <div id="fixed-table-toolbar">
         <button id="remove" class="btn btn-danger" disabled>
-            <i class="glyphicon glyphicon-remove"></i> Delete
+            <i class="fas fa-eraser fa-2x" style="color:White"></i> Delete
         </button>
     </div>
 
@@ -51,11 +47,12 @@
              data-editable-url="/studentUpdate">
         <thead>
         <tr>
-            <th data-editable-field="name">Student Name</th>
+            <th data-field="id" data-type="text">Student ID</th>
+            <th data-editable-field="name" data-editable="true" data-type="text">Student Name</th>
             <th data-editable-field="birthdate" data-editable="true">BirthDate</th>
             <th data-editable-field="class">Classification</th>
             <th data-editable-field="totalGPA">Overall GPA</th>
-            <th data-field="id" data-editable-field="pEmail" data-editable="true" data-type="text">Parent Email</th>
+            <th data-editable-field="pEmail" data-editable="true" data-type="text">Parent Email</th>
             <th data-editable-field="pPhone">Parent Phone</th>
             <th data-editable-field="sEmail">Student Email</th>
             <th data-editable-field="sPhone">Student Phone</th>
@@ -64,11 +61,12 @@
         <tbody>
         @for(student <- students) {
         <tr>
-            <td><a href="student/@student.getStudentId()">@student.getStudentName</a></td>
+            <td>@student.getStudentId</td>
+            <td>@student.getStudentName</td>
             <td>@student.getFormattedBirthDate</td>
             <td>@student.getGradeClass</td>
             <td>@student.getFormattedOverallGPA</td>
-            <td data-pk="@student.getStudentId()">@student.getParentEmail</td>
+            <td>@student.getParentEmail</td>
             <td>@student.getParentPhone</td>
             <td>@student.getStudentEmail</td>
             <td>@student.getStudentPhone</td>
@@ -80,5 +78,14 @@
 </div>
 
 </body>
-
+<script src="assets/lib/jquery/jquery.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/javascripts/bootstrap-switch.js"></script>
+<script src="assets/javascripts/nouislider.min.js"></script>
+<script src="assets/javascripts/bootstrap-datepicker.js"></script>
+<script src="assets/javascripts/jquery.sharrre.js"></script>
+<script src="assets/javascripts/now-ui-kit.js"></script>
+<script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="assets/javascripts/bootstrap-editable.js"></script>
+<script src="assets/lib/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
 </html>

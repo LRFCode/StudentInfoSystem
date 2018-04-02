@@ -1,23 +1,55 @@
 @(teachers : List[Teacher])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Teachers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/stylesheets/lux.css" />
-    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="/assets/lib/x-editable-bootstrap3/css/bootstrap-editable.css">
 
-    <script src="/assets/lib/jquery/jquery.min.js"></script>
-    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
+<head>
+
+    <meta charset="utf-8">
+    <title >Teachers</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/stylesheets/now-ui-kit.css">
+    <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap-editable.css">
+
 
 </head>
+
 <body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">GradeWit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
-    <h2 class=".text-center">Teachers</h2>
+    <h2 >Teachers</h2>
 
     <div id="toolbar">
         <button id="btnAddTeacher" type="button" class="btn btn-success btn-mg">Add Teacher</button>
@@ -26,28 +58,36 @@
         <thead>
 
         <tr>
-
-
             <th data-field="name" >Teacher Name</th>
             <th data-field="subject">Subject Focus</th>
             <th data-field="hiredate">Hire Date</th>
-
         </tr>
         </thead>
         <tbody>
         @for(teacher <- teachers) {
 
         <tr>
-
             <td><a href="teacher/@teacher.getTeacherId()">@teacher.getTeacherName()</a></td>
             <td>@teacher.getSubjectFocus</td>
             <td>@teacher.getFormattedHireDate</td>
-
         </tr>
         }
         </tbody>
     </table>
 </div>
-</body>
 
+<!-- Bootstrap core JavaScript + plugins -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/javascripts/bootstrap-switch.js"></script>
+<script src="assets/javascripts/nouislider.min.js"></script>
+<script src="assets/javascripts/bootstrap-datepicker.js"></script>
+<script src="assets/javascripts/jquery.sharrre.js"></script>
+<script src="assets/javascripts/now-ui-kit.js"></script>
+<script src="assets/lib/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="assets/lib/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
 </html>
