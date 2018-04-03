@@ -1,4 +1,5 @@
-@(gradeClassCounts : List[GradeClassCount])
+@(gradeClassCounts : List[GradeClassCount], gradeDistributions : List[GradeDistribution])
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,25 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="../assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/now-ui-dashboard.css">
     <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="assets/stylesheets/bootstrap-editable.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap-editable.css">
 
-
-    <script src="../assets/js/core/jquery.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="/assets/lib/chartjs/chart.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/now-ui-dashboard.js?v=1.0.1"></script>
-    <script src="assets/javascripts/adminScripts.js"></script>
 </head>
 
 <body class="">
@@ -172,7 +159,7 @@
                 <div class="col-lg-4">
                     <div class="card card-chart">
                         <div class="card-header">
-                            <h5 class="card-category">Students</h5>
+                            <h5 class="card-category">Pie:</h5>
                             <h4 class="card-title">Students by Classification</h4>
                             <div class="dropdown">
                                 <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
@@ -201,8 +188,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="card card-chart">
                         <div class="card-header">
-                            <h5 class="card-category">2018 Sales</h5>
-                            <h4 class="card-title">All products</h4>
+                            <h5 class="card-category">Bar:</h5>
+                            <h4 class="card-title">Students by Classification</h4>
                             <div class="dropdown">
                                 <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                     <i class="now-ui-icons loader_gear"></i>
@@ -217,7 +204,7 @@
                         </div>
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                                <canvas id="gradeClassChart1"></canvas>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -230,12 +217,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="card card-chart">
                         <div class="card-header">
-                            <h5 class="card-category">Email Statistics</h5>
-                            <h4 class="card-title">24 Hours Performance</h4>
+                            <h5 class="card-category">Bar:</h5>
+                            <h4 class="card-title">Overall Grades by Number of Students </h4>
                         </div>
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                                <canvas id="grade-distribution-chart"></canvas>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -340,7 +327,7 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th >
+                                    <th>
                                         Name
                                     </th>
                                     <th >
@@ -469,15 +456,23 @@
 <!--   Core JS Files   -->
 
 
+<script src="assets/lib/jquery/jquery.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../assets//javascripts/perfect-scrollbar.jquery.min.js"></script>
+<!-- Chart JS -->
+<script src="/assets/lib/chartjs/chart.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets//javascripts/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/javascripts/now-ui-dashboard.js"></script>
 
-    <script data-main="@routes.Assets.versioned("javascripts/adminScripts.js")" type="text/javascript" src="@routes.Assets.versioned("javascripts/adminScripts.js")"></script>
 <script type="text/javascript" src="assets/javascripts/gradeclasschart.js" id="gradeClassData"
         data-labels="@for(i <- 0 to gradeClassCounts.size() - 1){@gradeClassCounts.get(i).getLabel()@if(i < gradeClassCounts.size() - 1){,}}"
         data-data="@for(i <- 0 to gradeClassCounts.size() - 1){@gradeClassCounts.get(i).getCount()@if(i < gradeClassCounts.size() - 1){,}}"
 ></script>
-<script type="text/javascript" src="assets/javascripts/barClass.js" id="gradeClassData"
-        data-labels="@for(i <- 0 to gradeClassCounts.size() - 1){@gradeClassCounts.get(i).getLabel()@if(i < gradeClassCounts.size() - 1){,}}"
-        data-data="@for(i <- 0 to gradeClassCounts.size() - 1){@gradeClassCounts.get(i).getCount()@if(i < gradeClassCounts.size() - 1){,}}"
+<script type="text/javascript" src="assets/javascripts/gradedistribution.js" id="grade-distribution-data"
+        data-labels="@for(i <- 0 to gradeDistributions.size() - 1){@gradeDistributions.get(i).getGrade()@if(i < gradeDistributions.size() - 1){,}}"
+        data-data="@for(i <- 0 to gradeDistributions.size() - 1){@gradeDistributions.get(i).getCount()@if(i < gradeDistributions.size() - 1){,}}"
 ></script>
 
 

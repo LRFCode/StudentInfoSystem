@@ -1,6 +1,5 @@
 package controllers;
 
-import models.GradeClassCount;
 import models.Student;
 import models.StudentDetail;
 import play.data.DynamicForm;
@@ -40,7 +39,12 @@ public class StudentController extends Controller
     @Transactional
     public Result getStudentsDetails()
     {
-        List<StudentDetail> students = jpaApi.em().createQuery("select NEW models.StudentDetail(s.studentId, s.studentName, s.birthDate, s.gradeClass, avg(ag.grade), s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s.studentPhone) from AssignmentGrade ag join Assignment a on ag.assignmentId = a.assignmentId join Student s on ag.studentId = s.studentId group by ag.studentId, s.studentName, s.birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s.studentPhone").getResultList();
+        List<StudentDetail> students = jpaApi.em().createQuery("select NEW models.StudentDetail(s.studentId, s" +
+                ".studentName, s.birthDate, s.gradeClass, avg(ag.grade), s.rankClass, s.parentPhone, s.parentEmail, s" +
+                ".studentEmail, s.studentPhone) from AssignmentGrade ag join Assignment a on ag.assignmentId = a" +
+                ".assignmentId join Student s on ag.studentId = s.studentId group by ag.studentId, s.studentName, s" +
+                ".birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s" +
+                ".studentPhone").getResultList();
 
         return ok(views.html.students.render(students));
     }
@@ -59,25 +63,17 @@ public class StudentController extends Controller
     @Transactional(readOnly = true)
     public Result getStudentDetails(int studentId)
     {
-        StudentDetail student = jpaApi.em().createQuery("select NEW models.StudentDetail(s.studentId, s.studentName, s.birthDate, s.gradeClass, avg(ag.grade), s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s.studentPhone) from AssignmentGrade ag join Assignment a on ag.assignmentId = a.assignmentId join Student s on ag.studentId = s.studentId WHERE s.studentId =:studentId group by ag.studentId, s.studentName, s.birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s.studentPhone", StudentDetail.class)
+        StudentDetail student = jpaApi.em().createQuery("select NEW models.StudentDetail(s.studentId, s.studentName, " +
+                "s.birthDate, s.gradeClass, avg(ag.grade), s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail," +
+                " s.studentPhone) from AssignmentGrade ag join Assignment a on ag.assignmentId = a.assignmentId join " +
+                "Student s on ag.studentId = s.studentId WHERE s.studentId =:studentId group by ag.studentId, s" +
+                ".studentName, s.birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, " +
+                "s.studentPhone", StudentDetail.class)
                 .setParameter("studentId", studentId).getSingleResult();
 
         return ok(views.html.student.render(student));
     }
 
-    //Takes students' classifications from DB and graphs them on page
-    @Transactional(readOnly = true)
-    public Result getGradeClassChart()
-    {
-        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
-                "FROM Student s " +
-                //"JOIN PugFood pf ON f.foodId = pf.foodId " +
-                "GROUP BY s.gradeClass";
-
-        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
-
-        return ok(views.html.gradeclasschart.render(gradeClassCounts));
-    }
     @Transactional(readOnly = false)
     public Result postTableUpdate()
     {
@@ -87,6 +83,45 @@ public class StudentController extends Controller
         String pk = form.get("pk");
         String value = form.get("value");
 
+        int studentId = Integer.parseInt(pk);
+
+        String sql = "Select s FROM Student s WHERE studentId = :studentId";
+
+        Student student = jpaApi.em().createQuery(sql, Student.class).setParameter("studentId", studentId)
+                .getSingleResult();
+
+        if (name != null)
+        {
+            if (name.equals("8"))
+            {
+                student.setStudentPhone(value);
+
+            }
+            else if (name.equals("7"))
+            {
+                student.setStudentEmail(value);
+
+            }
+            else if (name.equals("6"))
+            {
+                student.setParentPhone(value);
+            }
+            else if (name.equals("5"))
+            {
+                student.setParentEmail(value);
+            }
+            else if (name.equals("3"))
+            {
+                student.setGradeClass(value);
+            }
+            else if (name.equals("1"))
+            {
+                student.setStudentName(value);
+            }
+
+
+            jpaApi.em().persist(student);
+        }
 
         System.out.println(name);
         System.out.println(pk);
@@ -98,7 +133,8 @@ public class StudentController extends Controller
     /*@Transactional
     public Result getOverallGrade(int studentId)
     {
-        List<Student> students = jpaApi.em().createQuery("select ag.studentid, avg(ag.grade) from assignmentgrade ag join assignment a on ag.assignmentId = a.assignment id group by ag.studentid", Student.class)
+        List<Student> students = jpaApi.em().createQuery("select ag.studentid, avg(ag.grade) from assignmentgrade ag
+        join assignment a on ag.assignmentId = a.assignment id group by ag.studentid", Student.class)
                 .setParameter("studentId", studentId).getResultList();
 
         return ok(views.html.students.render(students));

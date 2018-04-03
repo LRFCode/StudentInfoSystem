@@ -1,7 +1,7 @@
 var labels = document.getElementById("gradeClassData").getAttribute("data-labels").split(",");
 var data = document.getElementById("gradeClassData").getAttribute("data-data").split(",");
 
-var ctx = document.getElementById("gradeClassCharts");
+var ctx = document.getElementById("gradeClassChart1");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {

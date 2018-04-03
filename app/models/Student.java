@@ -23,7 +23,7 @@ public class Student
     private String studentPhone;
     private boolean bookmarked;
 
-
+    // GETTERS
     public int getStudentId()
     {
         return studentId;
@@ -147,5 +147,53 @@ public class Student
         }
 
         return BigDecimal.valueOf(gpa);
+    }
+
+    //SETTERS
+
+
+    public void setStudentName(String studentName)
+    {
+        this.studentName = studentName;
+    }
+
+    public void setBirthDate(Date birthDate)
+    {
+        this.birthDate = birthDate;
+    }
+
+    public void setGradeClass(String gradeClass)
+    {
+        this.gradeClass = gradeClass;
+    }
+
+    public void setRankClass(int rankClass)
+    {
+        this.rankClass = rankClass;
+    }
+
+    public void setParentEmail(String parentEmail)
+    {
+        this.parentEmail = parentEmail;
+    }
+
+    public void setParentPhone(String parentPhone)
+    {
+        this.parentPhone = parentPhone;
+    }
+
+    public void setStudentEmail(String studentEmail)
+    {
+        this.studentEmail = studentEmail;
+    }
+
+    public void setStudentPhone(String studentPhone)
+    {
+        this.studentPhone = studentPhone;
+    }
+
+    public void setBookmarked(boolean bookmarked)
+    {
+        this.bookmarked = bookmarked;
     }
 }

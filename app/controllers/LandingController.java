@@ -2,6 +2,7 @@ package controllers;
 
 import com.amazonaws.auth.policy.actions.SimpleEmailServiceActions;
 import models.GradeClassCount;
+import models.GradeDistribution;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
@@ -31,14 +32,25 @@ public class LandingController extends Controller
     @Transactional(readOnly = true)
     public Result getAdmin()
     {
-        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
+        String gradeClassSQL = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
                 "FROM Student s " +
                 //"JOIN PugFood pf ON f.foodId = pf.foodId " +
                 "GROUP BY s.gradeClass";
 
-        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
+        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(gradeClassSQL, GradeClassCount.class)
+                .getResultList();
 
-        return ok(views.html.adminHome.render(gradeClassCounts));
+
+        String gradeDistributionSQL = "SELECT CASE WHEN avgGrade > 89.50 THEN 'A' WHEN avgGrade >= 79.50 AND avgGrade < 89.50 " +
+                "THEN 'B' WHEN avgGrade >= 69.50 AND avgGrade < 79.50 THEN 'C' WHEN avgGrade >= 59.50 AND avgGrade < 69.50 THEN " +
+                "'D' ELSE 'F' END AS grade, COUNT(*) as count FROM (SELECT ag.studentid, AVG(ag.grade) AS avgGrade FROM " +
+                "assignmentgrade ag GROUP BY ag.studentId) AS grades GROUP BY grade";
+
+        List<GradeDistribution> gradeDistributions = jpaApi.em().createNativeQuery(gradeDistributionSQL,
+                GradeDistribution.class).getResultList();
+
+
+        return ok(views.html.adminHome.render(gradeClassCounts, gradeDistributions));
     }
 
     //Login Page
@@ -58,6 +70,20 @@ public class LandingController extends Controller
         Email.sendEmail(date);
 
         return ok("Sent Email");
+    }
+
+    //Takes students' classifications from DB and graphs them on page
+    @Transactional(readOnly = true)
+    public Result getGradeClassChart()
+    {
+        String sql = "SELECT NEW GradeClassCount(s.gradeClass, COUNT(*)) " +
+                "FROM Student s " +
+                //"JOIN PugFood pf ON f.foodId = pf.foodId " +
+                "GROUP BY s.gradeClass";
+
+        List<GradeClassCount> gradeClassCounts = jpaApi.em().createQuery(sql, GradeClassCount.class).getResultList();
+
+        return ok(views.html.gradeclasschart.render(gradeClassCounts));
     }
 
 }

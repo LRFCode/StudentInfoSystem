@@ -10,6 +10,8 @@ GET     /login                   controllers.LandingController.getLogin
 GET     /adminHome               controllers.LandingController.getAdmin
 POST    /adminHome               controllers.LandingController.postSendEmail
 
+
+
 GET     /students                controllers.StudentController.getStudentsDetails
 POST    /studentUpdate           controllers.StudentController.postTableUpdate
 GET     /student/:id             controllers.StudentController.getStudentDetails(id:Integer)
@@ -21,9 +23,8 @@ GET     /teachers                controllers.TeacherController.getTeachers
 
 GET     /graphs                  controllers.ChartController.getGraph
 
-#Charts and Graphs Routes
-GET     /chart                   controllers.ChartController.getChart
-GET     /gradeclasschart         controllers.StudentController.getGradeClassChart
+
+GET     /gradeclasschart         controllers.LandingController.getGradeClassChart
 
 #Testing Routes
 GET     /testData                controllers.TestDataController.getTestDataGenerator

@@ -14,11 +14,13 @@
 
 </head>
 <body class="">
-
+<!--Title-->
 <div class="container">
     <h2>Table:
     <small class="text-muted">Students</small></h2>
 </div>
+
+<!--custom toolbar addons-->
 <div class="bootstrap-table">
     <div id="fixed-table-toolbar">
         <button id="remove" class="btn btn-danger btn-icon btn-icon-mini btn-round" >
@@ -44,25 +46,25 @@
            data-query-params="queryParams"
            data-response-handler="responseHandler"
              data-id-field="id"
-             data-editable-emptytext="Default empty text."
+             data-editable-emptytext="-"
              data-editable-url="/studentUpdate">
         <thead>
         <tr>
             <th data-field="id" data-type="text">Student ID</th>
-            <th data-editable-field="name" data-editable="true" data-type="text">Student Name</th>
+            <th data-editable-field="name" data-editable="true">Student Name</th>
             <th data-editable-field="birthdate" data-editable="true">BirthDate</th>
-            <th data-editable-field="class">Classification</th>
+            <th data-editable-field="class" data-editable-type="select" data-editable="true" id="class">Classification</th>
             <th data-editable-field="totalGPA">Overall GPA</th>
-            <th data-editable-field="pEmail" data-editable="true" data-type="text">Parent Email</th>
-            <th data-editable-field="pPhone">Parent Phone</th>
-            <th data-editable-field="sEmail">Student Email</th>
-            <th data-editable-field="sPhone">Student Phone</th>
+            <th data-editable-field="pEmail" data-editable="true">Parent Email</th>
+            <th data-editable-field="pPhone" data-editable="true">Parent Phone</th>
+            <th data-editable-field="sEmail" data-editable="true">Student Email</th>
+            <th data-editable-field="sPhone" data-editable="true">Student Phone</th>
         </tr>
         </thead>
         <tbody>
         @for(student <- students) {
         <tr>
-            <td>@student.getStudentId</td>
+            <td><a href="student/@student.getStudentId()" @student.getStudentId ></a></td>
             <td>@student.getStudentName</td>
             <td>@student.getFormattedBirthDate</td>
             <td>@student.getGradeClass</td>
@@ -79,6 +81,8 @@
 </div>
 
 </body>
+
+
 <script src="assets/lib/jquery/jquery.js"></script>
 <script src="assets/lib/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="assets/javascripts/bootstrap-switch.js"></script>
@@ -89,4 +93,5 @@
 <script src="assets/javascripts/bootstrap-table.js"></script>
 <script src="assets/javascripts/bootstrap-editable.js"></script>
 <script src="assets/lib/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
+
 </html>

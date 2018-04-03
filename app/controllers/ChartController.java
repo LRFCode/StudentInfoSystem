@@ -13,6 +13,6 @@ public class ChartController extends Controller
 
     public Result getGraph()
     {
-        return ok(views.html.graphs.render());
+        return ok(views.html.chart.render());
     }
 }
