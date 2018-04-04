@@ -131,11 +131,9 @@ nowuiDashboard = {
             if (sidebar_mini_active == true) {
                 $('body').removeClass('sidebar-mini');
                 sidebar_mini_active = false;
-                nowuiDashboard.showSidebarMessage('Sidebar mini deactivated...');
             } else {
                 $('body').addClass('sidebar-mini');
                 sidebar_mini_active = true;
-                nowuiDashboard.showSidebarMessage('Sidebar mini activated...');
             }
 
             // we simulate the window Resize so the charts will get updated in realtime.
@@ -150,23 +148,6 @@ nowuiDashboard = {
         });
     },
 
-    showSidebarMessage: function showSidebarMessage(message) {
-        try {
-            $.notify({
-                icon: "now-ui-icons ui-1_bell-53",
-                message: message
-            }, {
-                type: 'info',
-                timer: 4000,
-                placement: {
-                    from: 'top',
-                    align: 'right'
-                }
-            });
-        } catch (e) {
-            console.log('Notify library is missing, please make sure you have the notifications library added.');
-        }
-    }
 
 };
 

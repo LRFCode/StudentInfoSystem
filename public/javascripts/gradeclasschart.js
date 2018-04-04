@@ -1,7 +1,7 @@
 var labels = document.getElementById("gradeClassData").getAttribute("data-labels").split(",");
 var data = document.getElementById("gradeClassData").getAttribute("data-data").split(",");
 
-var ctx = document.getElementById("gradeClassChart");
+/*var ctx = document.getElementById("gradeClassChart");
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -28,7 +28,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 2
         }]
     },
-   /* options: {
+   *//* options: {
         scales: {
             yAxes: [{
                 ticks: {
@@ -36,8 +36,8 @@ var myChart = new Chart(ctx, {
                 }
             }]
         }
-    }*/
-});
+    }*//*
+});*/
 
 var ctx = document.getElementById("gradeClassChart1");
 var myChart = new Chart(ctx, {

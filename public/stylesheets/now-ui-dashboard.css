@@ -2745,33 +2745,33 @@ Created using IcoMoon - icomoon.io
     background: -webkit-gradient(linear, left top, left bottom, from(#888), color-stop(80%, #000));
     background: linear-gradient(#888 0%, #000 80%);
     z-index: 3; }
-  .sidebar[data-color="blue"]:after,
-  .off-canvas-sidebar[data-color="blue"]:after {
-    background: #2CA8FF; }
-  .sidebar[data-color="blue"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="blue"] .nav li.active > a {
-    color: #2CA8FF; }
-    .sidebar[data-color="blue"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="blue"] .nav li.active > a i {
-      color: #2CA8FF; }
-  .sidebar[data-color="green"]:after,
-  .off-canvas-sidebar[data-color="green"]:after {
-    background: #18ce0f; }
-  .sidebar[data-color="green"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="green"] .nav li.active > a {
-    color: #18ce0f; }
-    .sidebar[data-color="green"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="green"] .nav li.active > a i {
-      color: #18ce0f; }
-  .sidebar[data-color="orange"]:after,
-  .off-canvas-sidebar[data-color="orange"]:after {
-    background: #f96332; }
-  .sidebar[data-color="orange"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="orange"] .nav li.active > a {
-    color: #f96332; }
-    .sidebar[data-color="orange"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="orange"] .nav li.active > a i {
-      color: #f96332; }
+  .sidebar[data-color="purple"]:after,
+  .off-canvas-sidebar[data-color="purple"]:after {
+    background: #4b3e81; }
+  .sidebar[data-color="purple"] .nav li.active > a,
+  .off-canvas-sidebar[data-color="purple"] .nav li.active > a {
+    color: #4b3e81; }
+    .sidebar[data-color="purple"] .nav li.active > a i,
+    .off-canvas-sidebar[data-color="purple"] .nav li.active > a i {
+      color: #4b3e81; }
+  .sidebar[data-color="teal"]:after,
+  .off-canvas-sidebar[data-color="teal"]:after {
+    background: #4ad9d9; }
+  .sidebar[data-color="teal"] .nav li.active > a,
+  .off-canvas-sidebar[data-color="teal"] .nav li.active > a {
+    color: #4ad9d9; }
+    .sidebar[data-color="teal"] .nav li.active > a i,
+    .off-canvas-sidebar[data-color="teal"] .nav li.active > a i {
+      color: #4ad9d9; }
+  .sidebar[data-color="salmon"]:after,
+  .off-canvas-sidebar[data-color="salmon"]:after {
+    background: #F2385A; }
+  .sidebar[data-color="salmon"] .nav li.active > a,
+  .off-canvas-sidebar[data-color="salmon"] .nav li.active > a {
+    color: #F2385A; }
+    .sidebar[data-color="salmon"] .nav li.active > a i,
+    .off-canvas-sidebar[data-color="salmon"] .nav li.active > a i {
+      color: #F2385A; }
   .sidebar[data-color="red"]:after,
   .off-canvas-sidebar[data-color="red"]:after {
     background: #FF3636; }
@@ -2781,15 +2781,15 @@ Created using IcoMoon - icomoon.io
     .sidebar[data-color="red"] .nav li.active > a i,
     .off-canvas-sidebar[data-color="red"] .nav li.active > a i {
       color: #FF3636; }
-  .sidebar[data-color="yellow"]:after,
-  .off-canvas-sidebar[data-color="yellow"]:after {
-    background: #FFB236; }
-  .sidebar[data-color="yellow"] .nav li.active > a,
-  .off-canvas-sidebar[data-color="yellow"] .nav li.active > a {
-    color: #FFB236; }
-    .sidebar[data-color="yellow"] .nav li.active > a i,
-    .off-canvas-sidebar[data-color="yellow"] .nav li.active > a i {
-      color: #FFB236; }
+  .sidebar[data-color="black"]:after,
+  .off-canvas-sidebar[data-color="black"]:after {
+    background: #004040; }
+  .sidebar[data-color="black"] .nav li.active > a,
+  .off-canvas-sidebar[data-color="black"] .nav li.active > a {
+    color: #004040; }
+    .sidebar[data-color="black"] .nav li.active > a i,
+    .off-canvas-sidebar[data-color="black"] .nav li.active > a i {
+      color: #004040; }
 
 .visible-on-sidebar-regular {
   display: inline-block !important; }
@@ -2979,7 +2979,9 @@ Created using IcoMoon - icomoon.io
 
 .card-chart .chart-area {
   height: 190px;
-  width: calc(100% + 30px);
+  width: 100% !important;
+  max-width: 800px;
+  height: auto !important;
   margin-left: -15px;
   margin-right: -15px; }
 
