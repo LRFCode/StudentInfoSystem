@@ -1,6 +1,6 @@
 package controllers;
 
-import com.amazonaws.auth.policy.actions.SimpleEmailServiceActions;
+import models.AdvSafetyAbed;
 import models.GradeClassCount;
 import models.GradeDistribution;
 import models.ZeroDistribution;
@@ -61,7 +61,12 @@ public class LandingController extends Controller
         List<ZeroDistribution> zeroDistributions = jpaApi.em().createNativeQuery(zeroDistributionSQL,
                 ZeroDistribution.class).getResultList();
 
-        return ok(views.html.adminHome.render(gradeClassCounts, gradeDistributions, zeroDistributions));
+        String safetyAbedSQL = "select a.assignmentName as label, ag.grade as count FROM assignmentGrade ag JOIN Student s ON ag.studentId = s.studentId JOIN Assignment a ON ag.assignmentId = a.assignmentId WHERE a.courseId = 20 and ag.studentId = 3  group by a.assignmentname, ag.grade";
+
+        List<AdvSafetyAbed> advSafetyAbeds = jpaApi.em().createNativeQuery(safetyAbedSQL, AdvSafetyAbed.class).getResultList();
+
+
+        return ok(views.html.adminHome.render(gradeClassCounts, gradeDistributions, zeroDistributions, advSafetyAbeds));
     }
 
     //Login Page

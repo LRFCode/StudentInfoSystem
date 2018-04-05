@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Student;
+import models.StudentCourseSub;
 import models.StudentDetail;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -11,6 +12,7 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.util.List;
+
 
 public class StudentController extends Controller
 {
@@ -34,8 +36,7 @@ public class StudentController extends Controller
         return ok(views.html.students.render(students));
     }*/
 
-    //todo fix later V
-    //Retrieves student details from DB and puts it on page
+    //Retrieves students from DB and puts it on page
     @Transactional
     public Result getStudentsDetails()
     {
@@ -46,7 +47,16 @@ public class StudentController extends Controller
                 ".birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s" +
                 ".studentPhone").getResultList();
 
-        return ok(views.html.students.render(students));
+        String studentCourseSubSQL = "SELECT s.studentId as studentId, c.courseid AS courseId, c" +
+                ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c JOIN teacher t ON c.teacherId = t.teacherId" +
+                " JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN" +
+                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId GROUP" +
+                " BY s.studentId, c.courseName, t.teacherName";
+
+        List<StudentCourseSub> studentCourseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub.class).getResultList();
+
+
+        return ok(views.html.students.render(students, studentCourseSubs));
     }
 
     /*//Retrieves individual student and puts it on page
@@ -58,8 +68,8 @@ public class StudentController extends Controller
 
         return ok(views.html.student.render(student));
     }*/
-//todo !!! fix this beneath this
-    //Retrieves individual student details and builds it on the page
+    //Retrieves individual student and builds it on the page
+
     @Transactional(readOnly = true)
     public Result getStudentDetails(int studentId)
     {
@@ -71,7 +81,11 @@ public class StudentController extends Controller
                 "s.studentPhone", StudentDetail.class)
                 .setParameter("studentId", studentId).getSingleResult();
 
-        return ok(views.html.student.render(student));
+       /* String studentCourseSubSQL = "SELECT s.studentId AS studentId, c.courseid, c.courseName, t.teacherName, avg(ag.grade) FROM course c JOIN teacher t ON c.teacherId = t.teacherId JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN student s ON sc.StudentId = s.StudentId join assignmentgrade ag ON ag.StudentId = s.StudentId WHERE s.studentId =: studentId GROUP BY s.studentId, c.courseName, t.teacherName";
+
+        StudentCourseSub course = jpaApi.em().createQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter("studentId", studentId).getSingleResult();*/
+
+        return ok(views.html.student.render(student/*, course*/));
     }
 
     @Transactional(readOnly = false)
@@ -118,7 +132,6 @@ public class StudentController extends Controller
             {
                 student.setStudentName(value);
             }
-
 
             jpaApi.em().persist(student);
         }

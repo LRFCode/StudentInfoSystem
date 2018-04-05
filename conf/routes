@@ -21,7 +21,6 @@ GET     /course/:id              controllers.CourseController.getCourse(id:Integ
 
 GET     /teachers                controllers.TeacherController.getTeachers
 
-GET     /graphs                  controllers.ChartController.getGraph
 
 
 GET     /gradeclasschart         controllers.LandingController.getGradeClassChart

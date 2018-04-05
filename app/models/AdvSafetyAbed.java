@@ -4,17 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class GradeClassCount
+public class AdvSafetyAbed
 {
     @Id
     private String label;
-    private long count;
-
-    public GradeClassCount(String label, long count)
-    {
-        this.label = label;
-        this.count = count;
-    }
+    private int count;
 
     public String getLabel()
     {
@@ -25,9 +19,6 @@ public class GradeClassCount
     {
         return count;
     }
-
-
-
 }
 
 

@@ -43,5 +43,20 @@ public class CourseController extends Controller
     }
 
 
+   /* @Transactional(readOnly = true)
+    public Result getStudentDetails(int courseId)
+    {
+        StudentCourseSub course = jpaApi.em().createQuery("select NEW models.StudentDetail(s.studentId, s.studentName, " +
+                "s.birthDate, s.gradeClass, avg(ag.grade), s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail," +
+                " s.studentPhone) from AssignmentGrade ag join Assignment a on ag.assignmentId = a.assignmentId join " +
+                "Student s on ag.studentId = s.studentId WHERE s.studentId =:studentId group by ag.studentId, s" +
+                ".studentName, s.birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, " +
+                "s.studentPhone", StudentDetail.class)
+                .setParameter("studentId", studentId).getSingleResult();
+
+        return ok(views.html.student.render(student));
+    }*/
+
+
 
 }

@@ -10,7 +10,7 @@ var ctx = document.getElementById("zero-distribution-chart");
       datasets: [{
         label: "# of Zeroes per Student",
         data: data,
-        backgroundColor: ["#0D397F", "#F4F9E9", "#1C77C8", "#FF1A6A", "#BC0639"]
+        backgroundColor: ["#45B4D9", "#F6B701", "#01C89E", "#FF204B", "#8FD6CC"]
       }]
     },
     options: {
