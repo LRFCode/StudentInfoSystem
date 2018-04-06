@@ -3,6 +3,7 @@ package controllers;
 import models.Student;
 import models.StudentCourseSub;
 import models.StudentDetail;
+import models.StudentGradeSub;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.db.jpa.JPAApi;
@@ -47,13 +48,14 @@ public class StudentController extends Controller
                 ".birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s" +
                 ".studentPhone").getResultList();
 
-        String studentCourseSubSQL = "SELECT s.studentId as studentId, c.courseid AS courseId, c" +
+        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c.courseid AS courseId, c" +
                 ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c JOIN teacher t ON c.teacherId = t.teacherId" +
                 " JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN" +
-                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId GROUP" +
-                " BY s.studentId, c.courseName, t.teacherName";
+                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND ag.assignmentId = a.assignmentId GROUP" +
+                " BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName";
 
         List<StudentCourseSub> studentCourseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub.class).getResultList();
+
 
 
         return ok(views.html.students.render(students, studentCourseSubs));
@@ -81,11 +83,25 @@ public class StudentController extends Controller
                 "s.studentPhone", StudentDetail.class)
                 .setParameter("studentId", studentId).getSingleResult();
 
-       /* String studentCourseSubSQL = "SELECT s.studentId AS studentId, c.courseid, c.courseName, t.teacherName, avg(ag.grade) FROM course c JOIN teacher t ON c.teacherId = t.teacherId JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN student s ON sc.StudentId = s.StudentId join assignmentgrade ag ON ag.StudentId = s.StudentId WHERE s.studentId =: studentId GROUP BY s.studentId, c.courseName, t.teacherName";
+        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c.courseid AS courseId, c" +
+                ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c JOIN teacher t ON c.teacherId = t.teacherId" +
+                " JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN" +
+                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND ag.assignmentId = a.assignmentId WHERE s.studentId =:studentId  GROUP" +
+                " BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName, c.courseId";
+
+        List<StudentCourseSub> courseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter("studentId", studentId).getResultList();
+
+        String courseGradesSQL = "SELECT ag.assignmentGradeId, c.courseId, a.assignmentName, ag.grade FROM course c " +
+                "JOIN assignment a ON c.courseId = a.courseId JOIN assignmentGrade ag ON a.assignmentId = ag" +
+                ".assignmentId where ag.studentId =:studentId";
+
+        List<StudentGradeSub> gradeSubs = jpaApi.em().createNativeQuery(courseGradesSQL, StudentGradeSub.class).setParameter("studentId", studentId).getResultList();
+
+       /*String studentCourseSubSQL = "SELECT sc.studentCourseId, s.studentId AS studentId, c.courseid, c.courseName, t.teacherName, avg(ag.grade) FROM course c JOIN teacher t ON c.teacherId = t.teacherId JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN student s ON sc.StudentId = s.StudentId join assignmentgrade ag ON ag.StudentId = s.StudentId WHERE s.studentId =: studentId GROUP BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName";
 
         StudentCourseSub course = jpaApi.em().createQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter("studentId", studentId).getSingleResult();*/
 
-        return ok(views.html.student.render(student/*, course*/));
+        return ok(views.html.student.render(student, courseSubs, gradeSubs));
     }
 
     @Transactional(readOnly = false)
@@ -141,6 +157,8 @@ public class StudentController extends Controller
         System.out.println(value);
 
         return ok("Blah");
+
+
     }
 
     /*@Transactional
