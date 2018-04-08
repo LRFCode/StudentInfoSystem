@@ -31,25 +31,25 @@
     Tip 1: You can change the color of the sidebar using: data-color="purple | teal | salmon | red | warm black"
 -->
         <div align="center" class="logo">
-            <a href="/adminHome" class="simple-text logo-normal">
+            <a href="../adminHome" class="simple-text logo-normal">
                 <strong>GradeWit</strong>
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active">
-                    <a href="/adminHome">
+                <li>
+                    <a href="../adminHome">
                         <i class="fas fa-home"></i>
                         <p>Home</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/students">
+                    <a href="../students">
                         <i class="fas fa-graduation-cap"></i>
                         <p>Students</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="../courses">
                         <i class="fas fa-book"></i>
                         <p>Courses</p>
@@ -59,7 +59,6 @@
                     <a href="../teachers">
                         <i class="far fa-id-badge"></i>
                         <p>Teachers</p>
-
                     </a>
                 </li>
             </ul>
@@ -67,16 +66,15 @@
     </div>
     <div class="main-panel">
         <!--Title-->
-        <div class="container">
+        <div class="container text-center">
             <h2>Table:
                 <small class="text-muted">Courses</small>
             </h2>
         </div>
-        <div class="container ">
-            <h2 >Courses</h2>
-                <!-- Table begins here -->
-            <table data-toggle="table">
-                <thead>
+        <div class="bootstrap-table text-center">
+            <table id="table"
+                   data-toggle="table">
+                <thead class="thead-dark">
                 <tr>
                     <th data-sortable="true" data-field="name" data-editable="true">Course Name</th>
                     <th data-field="teacherID">TeacherId</th>

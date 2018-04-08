@@ -13,6 +13,8 @@ POST    /adminHome               controllers.LandingController.postSendEmail
 GET     /students                controllers.StudentController.getStudentsDetails
 POST    /studentUpdate           controllers.StudentController.postTableUpdate
 GET     /student/:id             controllers.StudentController.getStudentDetails(id:Integer)
+POST    /gradeUpdate             controllers.StudentController.postGradeTableUpdate
+
 
 GET     /courses                 controllers.CourseController.getCourses
 GET     /course/:id              controllers.CourseController.getCourse(id:Integer)

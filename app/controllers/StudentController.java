@@ -48,14 +48,17 @@ public class StudentController extends Controller
                 ".birthDate, s.gradeClass, s.rankClass, s.parentPhone, s.parentEmail, s.studentEmail, s" +
                 ".studentPhone").getResultList();
 
-        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c.courseid AS courseId, c" +
-                ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c JOIN teacher t ON c.teacherId = t.teacherId" +
+        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c" +
+                ".courseid AS courseId, c" +
+                ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c " +
+                "JOIN teacher t ON c.teacherId = t.teacherId" +
                 " JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN" +
-                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND ag.assignmentId = a.assignmentId GROUP" +
+                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND " +
+                "ag.assignmentId = a.assignmentId GROUP" +
                 " BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName";
 
-        List<StudentCourseSub> studentCourseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub.class).getResultList();
-
+        List<StudentCourseSub> studentCourseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL,
+                StudentCourseSub.class).getResultList();
 
 
         return ok(views.html.students.render(students, studentCourseSubs));
@@ -83,23 +86,33 @@ public class StudentController extends Controller
                 "s.studentPhone", StudentDetail.class)
                 .setParameter("studentId", studentId).getSingleResult();
 
-        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c.courseid AS courseId, c" +
-                ".courseName AS courseName, t.teacherName AS teacherName, avg(ag.grade) AS overallGPA FROM course c JOIN teacher t ON c.teacherId = t.teacherId" +
+        String studentCourseSubSQL = "SELECT sc.studentCourseId AS studentCourseId, s.studentId as studentId, c" +
+                ".courseid AS courseId, c" +
+                ".courseName AS courseName, t.teacherName AS teacherName, ROUND(avg(ag.grade), 1) AS overallGPA FROM " +
+                "course c JOIN teacher t ON c.teacherId = t.teacherId" +
                 " JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN" +
-                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND ag.assignmentId = a.assignmentId WHERE s.studentId =:studentId  GROUP" +
+                " student s ON sc.StudentId = s.StudentId JOIN assignmentgrade ag ON ag.StudentId = s.StudentId  AND " +
+                "ag.assignmentId = a.assignmentId WHERE s.studentId =:studentId  GROUP" +
                 " BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName, c.courseId";
 
-        List<StudentCourseSub> courseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter("studentId", studentId).getResultList();
+        List<StudentCourseSub> courseSubs = jpaApi.em().createNativeQuery(studentCourseSubSQL, StudentCourseSub
+                .class).setParameter("studentId", studentId).getResultList();
 
         String courseGradesSQL = "SELECT ag.assignmentGradeId, c.courseId, a.assignmentName, ag.grade FROM course c " +
                 "JOIN assignment a ON c.courseId = a.courseId JOIN assignmentGrade ag ON a.assignmentId = ag" +
                 ".assignmentId where ag.studentId =:studentId";
 
-        List<StudentGradeSub> gradeSubs = jpaApi.em().createNativeQuery(courseGradesSQL, StudentGradeSub.class).setParameter("studentId", studentId).getResultList();
+        List<StudentGradeSub> gradeSubs = jpaApi.em().createNativeQuery(courseGradesSQL, StudentGradeSub.class)
+                .setParameter("studentId", studentId).getResultList();
 
-       /*String studentCourseSubSQL = "SELECT sc.studentCourseId, s.studentId AS studentId, c.courseid, c.courseName, t.teacherName, avg(ag.grade) FROM course c JOIN teacher t ON c.teacherId = t.teacherId JOIN assignment a ON c.courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN student s ON sc.StudentId = s.StudentId join assignmentgrade ag ON ag.StudentId = s.StudentId WHERE s.studentId =: studentId GROUP BY sc.studentCourseId, s.studentId, c.courseName, t.teacherName";
+       /*String studentCourseSubSQL = "SELECT sc.studentCourseId, s.studentId AS studentId, c.courseid, c.courseName,
+        t.teacherName, avg(ag.grade) FROM course c JOIN teacher t ON c.teacherId = t.teacherId JOIN assignment a ON c
+        .courseId = a.courseId JOIN studentcourse sc ON sc.courseId = c.CourseId JOIN student s ON sc.StudentId = s
+        .StudentId join assignmentgrade ag ON ag.StudentId = s.StudentId WHERE s.studentId =: studentId GROUP BY sc
+        .studentCourseId, s.studentId, c.courseName, t.teacherName";
 
-        StudentCourseSub course = jpaApi.em().createQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter("studentId", studentId).getSingleResult();*/
+        StudentCourseSub course = jpaApi.em().createQuery(studentCourseSubSQL, StudentCourseSub.class).setParameter
+        ("studentId", studentId).getSingleResult();*/
 
         return ok(views.html.student.render(student, courseSubs, gradeSubs));
     }
@@ -122,35 +135,32 @@ public class StudentController extends Controller
 
         if (name != null)
         {
-            if (name.equals("8"))
+            if (name.equals("10"))
             {
                 student.setStudentPhone(value);
 
             }
-            else if (name.equals("7"))
+            else if (name.equals("9"))
             {
                 student.setStudentEmail(value);
 
             }
-            else if (name.equals("6"))
+            else if (name.equals("8"))
             {
                 student.setParentPhone(value);
             }
-            else if (name.equals("5"))
+            else if (name.equals("7"))
             {
                 student.setParentEmail(value);
             }
             else if (name.equals("3"))
-            {
-                student.setGradeClass(value);
-            }
-            else if (name.equals("1"))
             {
                 student.setStudentName(value);
             }
 
             jpaApi.em().persist(student);
         }
+
 
         System.out.println(name);
         System.out.println(pk);
@@ -159,6 +169,37 @@ public class StudentController extends Controller
         return ok("Blah");
 
 
+    }
+
+    @Transactional(readOnly = false)
+    public Result postGradeTableUpdate()
+    {
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String name = form.get("name");
+        String pk = form.get("pk");
+        String value = form.get("value");
+
+        int courseId = Integer.parseInt(pk);
+
+        String sql = "Select ag FROM AssignmentGrade ag WHERE assignmentGradeId = :assignmentGradeId";
+
+        StudentGradeSub courseSub = jpaApi.em().createQuery(sql, StudentGradeSub.class).setParameter("courseId",
+                courseId)
+                .getSingleResult();
+
+        if (name != null)
+        {
+            if (name.equals("2"))
+            {
+                courseSub.setAssignmentName(value);
+            }
+
+            jpaApi.em().persist(courseSub);
+
+        }
+
+        return ok("Blah");
     }
 
     /*@Transactional

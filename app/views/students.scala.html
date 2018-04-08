@@ -2,22 +2,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Students</title>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!--Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
           integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <!-- CSS Files -->
-    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="../assets/stylesheets/bootstrap.css">
     <link rel="stylesheet" href="/assets/stylesheets/now-ui-dashboard.css">
     <link rel="stylesheet" href="/assets/lib/bootstrap-table/src/bootstrap-table.css">
     <link rel="stylesheet" href="/assets/stylesheets/bootstrap-editable.css">
 
-    <script src="assets/lib/jquery/jquery.js" type="text/javascript"></script>
-    <script src="assets/lib/bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
-
-
+    <script src="/assets/lib/jquery/jquery.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -26,20 +27,20 @@
     Tip 1: You can change the color of the sidebar using: data-color="purple | teal | salmon | red | warm black"
 -->
         <div align="center" class="logo">
-            <a href="/adminHome" class="simple-text logo-normal">
+            <a href="../adminHome" class="simple-text logo-normal">
                 <strong>GradeWit</strong>
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active">
-                    <a href="/adminHome">
+                <li>
+                    <a href="../adminHome">
                         <i class="fas fa-home"></i>
                         <p>Home</p>
                     </a>
                 </li>
-                <li>
-                    <a href="/students">
+                <li class="active">
+                    <a href="../students">
                         <i class="fas fa-graduation-cap"></i>
                         <p>Students</p>
                     </a>
@@ -62,29 +63,27 @@
     </div>
     <div class="main-panel ps-container ps-theme-default">
         <!--Title-->
-        <div class="container">
+        <div class="container text-center">
             <h2>Table:
                 <small class="text-muted">Students</small>
             </h2>
         </div>
 
-        <!--custom toolbar addons-->
-        <div class="bootstrap-table ">
+        <div class="bootstrap-table text-center" >
             <table id="table"
                    data-toggle="table"
-                   data-show-columns="true"
-                   data-show-toggle="true"
-                   data-minimum-count-columns="2"
                    data-query-params="queryParams"
                    data-response-handler="responseHandler"
-                   data-editable-emptytext="-"
+                   data-id-field="id"
+                   data-editable-emptytext="+"
                    data-editable-url="/studentUpdate">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Courses</th>
-                    <th data-sorter="htmlSorter" data-type="text">Student ID</th>
+                    <th data-editable-field="button">Courses</th>
+                    <th>Student ID</th>
+                    <th class="d-none" data-field="id">Student ID</th> <!--Hide me! -->
                     <th data-editable-field="name" data-sortable="true" data-editable="true">Student Name</th>
-                    <th data-editable-field="birthdate" data-sortable="true" data-editable="true">BirthDate</th>
+                    <th data-editable-field="birthdate">Birthdate</th>
                     <th data-editable-field="class">Classification</th>
                     <th data-editable-field="totalGPA" data-sortable="true">Overall GPA</th>
                     <th data-editable-field="pEmail" data-editable="true">Parent Email</th>
@@ -97,10 +96,11 @@
                 @for(i <- 0 to students.size() - 1) {
                 <tr>
                     <td>
-                        <button class="btn btn-primary" data-toggle="collapse" type="button" data-target="#sub@i"
-                                aria-controls="sub@i" aria-expanded="false"></button>
+                        <button class="btn btn-primary btn-fab btn-icon btn-round" data-toggle="collapse" type="button" data-target="#sub@i"
+                                aria-controls="sub@i" aria-expanded="false"><i class="fas fa-plus-circle"></i></button>
                     </td>
-                    <td><a href="/student/@students.get(i).getStudentId"> @students.get(i).getStudentId </a></td>
+                    <td><a href="student/@students.get(i).getStudentId"> @students.get(i).getStudentId </a></td>
+                    <td class="d-none">@students.get(i).getStudentId</td> <!--HIDE ME! -->
                     <td>@students.get(i).getStudentName</td>
                     <td>@students.get(i).getFormattedBirthDate</td>
                     <td>@students.get(i).getGradeClass</td>
@@ -133,7 +133,6 @@
                         </table>
                     </td>
                 </tr>
-
                 }
                 </tbody>
             </table>
@@ -161,21 +160,15 @@
 <script src="assets/javascripts/bootstrap-table.js"></script>
 <script src="assets/javascripts/bootstrap-editable.js"></script>
 <script src="assets/lib/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
-<script src="/assets/javascripts/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-<script src="assets/javascripts/sidebar.js" type="text/javascript"></script>
+<script src="/assets/javascripts/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/javascripts/sidebar.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/javascripts/bootstrap-notify.js"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="assets/javascripts/now-ui-dashboard.js" type="text/javascript"></script>
+<script src="assets/javascripts/now-ui-dashboard.js"></script>
 
-<script>
-    function htmlSorter(a, b) {
-	var a = $(a).text();
-  var b = $(b).text();
-  if (a < b) return -1;
-  if (a > b) return 1;
-  return 0;
-}
-</script>
+
+
+
 </body>
 </html>
