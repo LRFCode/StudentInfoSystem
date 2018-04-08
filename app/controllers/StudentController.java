@@ -28,14 +28,6 @@ public class StudentController extends Controller
         this.jpaApi = jpaApi;
     }
 
-   /* //Retrieves entire student table from DB and puts it on page
-    @Transactional(readOnly = true)
-    public Result getStudents()
-    {
-        List<Student> students = jpaApi.em().createQuery("SELECT s from Student s").getResultList();
-
-        return ok(views.html.students.render(students));
-    }*/
 
     //Retrieves students from DB and puts it on page
     @Transactional
@@ -64,16 +56,6 @@ public class StudentController extends Controller
         return ok(views.html.students.render(students, studentCourseSubs));
     }
 
-    /*//Retrieves individual student and puts it on page
-    @Transactional(readOnly = true)
-    public Result getStudent(int studentId)
-    {
-        Student student = jpaApi.em().createQuery("SELECT s FROM Student s WHERE studentId =:studentId", Student.class)
-                .setParameter("studentId", studentId).getSingleResult();
-
-        return ok(views.html.student.render(student));
-    }*/
-    //Retrieves individual student and builds it on the page
 
     @Transactional(readOnly = true)
     public Result getStudentDetails(int studentId)
@@ -202,7 +184,8 @@ public class StudentController extends Controller
         return ok("Blah");
     }
 
-    /*@Transactional
+    /*
+    @Transactional
     public Result getOverallGrade(int studentId)
     {
         List<Student> students = jpaApi.em().createQuery("select ag.studentid, avg(ag.grade) from assignmentgrade ag
@@ -210,7 +193,19 @@ public class StudentController extends Controller
                 .setParameter("studentId", studentId).getResultList();
 
         return ok(views.html.students.render(students));
-    }*/
+    }
+    */
+
+     /*
+      //Retrieves entire student table from DB and puts it on page
+    @Transactional(readOnly = true)
+    public Result getStudents()
+    {
+        List<Student> students = jpaApi.em().createQuery("SELECT s from Student s").getResultList();
+
+        return ok(views.html.students.render(students));
+    }
+    */
 
 
 }
